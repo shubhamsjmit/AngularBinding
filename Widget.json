@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "name": "Mango",
+      "desc": "It is fruit",
+      "id": 0
+    },
+    {
+      "name": "Apple",
+      "desc": "It is also a fruit",
+      "id": 1
+    },
+    {
+      "name": "Pineapple",
+      "desc": "It is not my fav fruit",
+      "id": 2
+    },
+    {
+      "name": "main",
+      "desc": "kel",
+      "id": 3
+    },
+    {
+      "name": "bANANA",
+      "desc": "yELLOW",
+      "id": 4
+    },
+    {
+      "name": "dfgd",
+      "desc": "dgdf",
+      "id": 5
+    }
+  ]
+}

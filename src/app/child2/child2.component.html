@@ -1,0 +1,22 @@
+<div class="col s12 m6">
+  <div class="card darken-1">
+    <div class="card-content ">
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder="widget name" name='name' [(ngModel)]="widget.name" type="text" class="validate">
+
+            </div>
+            <div class="input-field col s12">
+              <input name='desc' type="text" placeholder="widget description" [(ngModel)]="widget.desc">
+
+            </div>
+          </div>
+        </form>
+        <a class="center waves-effect waves-light btn" (click)="checkData(widget)">Add</a>
+      </div>
+    </div>
+
+  </div>
+</div>
