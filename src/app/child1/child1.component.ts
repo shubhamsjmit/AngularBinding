@@ -17,5 +17,12 @@ export class Child1Component implements OnInit {
       .subscribe((data) => {
         this.items = data;
       });
+    }
+    UpdateDes(Upditem: Item ) {
+      if (Upditem.id == null) {
+        this.items.push(Upditem);
+      } else {
+        console.log('heloo');
+      }
+    }
   }
-}
