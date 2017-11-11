@@ -7,10 +7,15 @@ import { Item } from '../child2/Item.Interface';
   templateUrl: './child1.component.html',
   styleUrls: ['./child1.component.css']
 })
-export class Child1Component implements OnInit {
-  items: Object [];
+export class Child1Component implements OnInit, OnChanges {
+  items: Object []= [];
+  private upItem: Item ;
   constructor(private request: WidgetListService ) {}
-  @Input() UpItem: Item ;
+  @Input()
+  public set UpItem(value: Item){
+    this.upItem = value;
+    this.UpdateDes(value);
+  }
   @Output() UpdateItemFromChild: EventEmitter<Item> = new EventEmitter<Item>();
   ngOnInit() {
     this.request.loadData()
@@ -19,7 +24,14 @@ export class Child1Component implements OnInit {
         console.log('ghgf');
       });
     }
+    ngOnChanges(changes) {
+    console.log(changes);
+      if (changes.UpItem.name !== undefined) {
+        this.UpdateDes(changes.UpItem);
+      }
+    }
     UpdateDes(Upditem: Item ) {
+    console.log('hahahahahah')
       if (Upditem.id == null) {
         this.items.push(Upditem);
       } else {

@@ -1,14 +1,13 @@
-
-
 <div class="col s12 m6">
   <div class="card  darken-1">
     <div class="card-content ">
       <div class="collection">
-        <a *ngFor="let widget of items " class="collection-item">
+        <a *ngFor="let widget of items"  class="collection-item">
           <a (click)="UploadData(widget)">{{widget.name}}</a>
         </a>
       </div>
     </div>
-
   </div>
 </div>
+
+{{upItem.name}} ha
