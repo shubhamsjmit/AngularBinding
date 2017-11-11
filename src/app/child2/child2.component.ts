@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit, Output, Input, OnChanges} from '@angular/core';
 import { Item } from './Item.Interface';
 import { WidgetListService } from '../widget-list.service';
 import { EventEmitter } from '@angular/core';
@@ -10,21 +10,30 @@ import { EventEmitter } from '@angular/core';
 })
 
 
-export class Child2Component implements OnInit {
+export class Child2Component implements OnInit, OnChanges {
 @Output() WidgetItem: EventEmitter<Item> = new EventEmitter<Item>();
-  constructor( private request: WidgetListService ) { }
-   widget: Item = {
+@Input() UpItem;
+
+  widget: Item = {
     name: '',
     desc: '' ,
     id: null
   }
-
+  constructor( private request: WidgetListService ) { }
   ngOnInit() {
+  }
+  ngOnChanges(changes) {
+    if (changes.UpItem.currentValue !== changes.UpItem.previousValue) {
+      this.widget = changes.UpItem.currentValue;
+    }
   }
   checkData( Widget: Item) {
     this.request.checkData(Widget)
       .subscribe(data => {
         this.WidgetItem.emit(Widget);
       });
+    Widget.name = '';
+    Widget.desc = '';
+    Widget.id = null;
   }
 }

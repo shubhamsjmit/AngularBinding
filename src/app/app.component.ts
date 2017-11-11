@@ -7,5 +7,9 @@ import { Item } from './child2/Item.Interface';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  {
-  UpdateItem: Item;
+  UpdateItem: Item = {
+    name: '',
+    desc: '' ,
+    id: null
+  };
 }

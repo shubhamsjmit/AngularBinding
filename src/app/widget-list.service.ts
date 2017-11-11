@@ -16,6 +16,7 @@ export class WidgetListService {
   }
   updateData(data) {
     console.log("patch");
+    console.log(`BASE_URL${data.id}`);
     return this.http.patch(`BASE_URL${data.id}`, data, header)
       .map(res => res.json());
   }
@@ -30,5 +31,4 @@ export class WidgetListService {
       .map(res => res.json());
 
   }
-
 }
