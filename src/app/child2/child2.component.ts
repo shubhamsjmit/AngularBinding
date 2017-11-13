@@ -2,6 +2,7 @@ import {Component, OnInit, Output, Input, OnChanges} from '@angular/core';
 import { Item } from './Item.Interface';
 import { WidgetListService } from '../widget-list.service';
 import { EventEmitter } from '@angular/core';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-child2',
@@ -13,7 +14,6 @@ import { EventEmitter } from '@angular/core';
 export class Child2Component implements OnInit, OnChanges {
 @Output() WidgetItem: EventEmitter<Item> = new EventEmitter<Item>();
 @Input() UpItem;
-
   widget: Item = {
     name: '',
     desc: '' ,
@@ -28,6 +28,9 @@ export class Child2Component implements OnInit, OnChanges {
     }
   }
   checkData( Widget: Item) {
+    console.log(Widget);
+    console.log(Widget);
+    this.request.changeNav(Widget);
     this.request.checkData(Widget)
       .subscribe(data => {
         this.WidgetItem.emit(Widget);

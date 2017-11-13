@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, OnChanges, EventEmitter, Output} from '@angular/core';
 import { WidgetListService } from '../widget-list.service';
 import { Item } from '../child2/Item.Interface';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-child1',
@@ -8,7 +9,8 @@ import { Item } from '../child2/Item.Interface';
   styleUrls: ['./child1.component.css']
 })
 export class Child1Component implements OnInit, OnChanges {
-  items: Object []= [];
+  items: Item[]= [];
+  subscription: Subscription;
   private upItem: Item ;
   constructor(private request: WidgetListService ) {}
   @Input()
@@ -23,19 +25,25 @@ export class Child1Component implements OnInit, OnChanges {
         this.items = data;
         console.log('ghgf');
       });
+    this.subscription = this.request.navItem$.subscribe(
+      item => {
+        console.log(item);
+      //   if (item !== null) {
+      //   this.UpdateDes(item); }
+       }
+    );
     }
     ngOnChanges(changes) {
-    console.log(changes);
-      if (changes.UpItem.name !== undefined) {
-        this.UpdateDes(changes.UpItem);
-      }
+      this.request.loadData()
+        .subscribe((data) => {
+          this.items = data;
+          console.log('ghgf');
+        });
     }
     UpdateDes(Upditem: Item ) {
-    console.log('hahahahahah')
       if (Upditem.id == null) {
         this.items.push(Upditem);
       } else {
-        console.log('heloo');
      }
   }
   UploadData(widget: Item) {

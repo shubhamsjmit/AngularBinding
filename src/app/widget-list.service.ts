@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { Item } from './child2/Item.Interface';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 const BASE_URL = 'http://localhost:3000/items/';
 const header = {headers: new Headers({'Content-Type': 'application/json'})};
 
 @Injectable()
 export class WidgetListService {
+  private item: Item;
+  private _navItemSource = new BehaviorSubject<Item>(this.item);
+  navItem$ = this._navItemSource.asObservable();
 
+  changeNav(data) {
+    this._navItemSource.next(data);
+  }
   constructor( private http: Http ) { }
   loadData() {
 

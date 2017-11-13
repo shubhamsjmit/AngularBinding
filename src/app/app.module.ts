@@ -9,6 +9,7 @@ import { WidgetListService } from './widget-list.service';
 import {HttpModule} from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { DataChangeDirective } from './child1/data-change.directive';
+import { DisplayBlogComponent } from './display-blog/display-blog.component';
 
 const approutes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -22,7 +23,8 @@ const approutes = [
     AppComponent,
     Child1Component,
     Child2Component,
-    DataChangeDirective
+    DataChangeDirective,
+    DisplayBlogComponent
   ],
   imports: [
     BrowserModule,
